@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF canvas check</title>
+  <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="hr.css">
+  <link rel="stylesheet" href="pdf-layouts.css">
+  <style>
+    body{margin:0}
+    .main{margin-left:0}
+    .top{display:none}
+    .side{display:none}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <main class="page dash hr fin pdf-layouts-page">
+      <p class="crumb">CHECK</p>
+      <div class="dash-head">
+        <div>
+          <h1 id="plTitle">PDF Layouts</h1>
+          <p class="sub" id="plSub">Canvas check</p>
+        </div>
+        <div class="dash-meta" id="plActions"></div>
+      </div>
+      <div id="pageTip"></div>
+      <div id="pl" aria-live="polite"></div>
+    </main>
+    <div class="modal" id="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" id="modalCard"></div></div>
+  </div>
+  <script>window.__VEYORA_PDF_HARNESS = true;</script>
+  <script>
+    window.veyoraDb = { from: function () { return this; } };
+    window.VeyoraShell = { esc: function (t) { return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]; }); } };
+    window.VeyoraPdfApi = {};
+    window.VeyoraPdfEngine = { generatePdf: function () { return Promise.resolve({ blob: new Blob(), pageCount: 1 }); }, downloadBlob: function () {} };
+  </script>
+  <script src="pdf-schema.js"></script>
+  <script src="pdf-fields.js"></script>
+  <script src="pdf-render.js"></script>
+  <script src="pdf-layouts.js"></script>
+  <script>window.VeyoraPdfOpenDemo();</script>
+</body>
+</html>

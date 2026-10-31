@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Set up your company — VEYORA</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="onboarding.css?v=20261029p1">
+</head>
+<body>
+  <div class="ob-sky" aria-hidden="true"></div>
+  <div class="ob-app" id="obApp">
+    <header class="ob-top">
+      <div class="ob-brand">
+        <img src="assets/logo.png" alt="" width="36" height="36">
+        <div>
+          <strong>VEYORA</strong>
+          <span id="obCompanyName">Company setup</span>
+        </div>
+      </div>
+      <p class="ob-kicker"><i></i> First-time setup</p>
+    </header>
+
+    <div class="ob-progress" id="obProgress" aria-label="Setup progress"></div>
+
+    <main class="ob-main" id="obMain">
+      <p class="ob-loading">Loading your company…</p>
+    </main>
+
+    <footer class="ob-foot" id="obFoot" hidden>
+      <button type="button" class="ob-ghost" id="obBack" hidden>Back</button>
+      <div class="ob-foot-r">
+        <button type="button" class="ob-ghost" id="obSkip" hidden>Skip for now</button>
+        <button type="button" class="ob-primary" id="obNext">Continue</button>
+      </div>
+    </footer>
+  </div>
+
+  <p class="ob-toast" id="obToast" hidden role="status"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="onboarding.js?v=20261029p1"></script>
+</body>
+</html>

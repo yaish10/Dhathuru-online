@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Platform — VEYORA</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <img src="assets/logo.png" alt="" width="44" height="44">
+      <div><strong>VEYORA</strong><span>Platform Owner</span></div>
+    </div>
+    <p class="side-label">PLATFORM</p>
+    <nav class="nav">
+      <a href="platform.html" class="on" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/></svg>Companies</a>
+      <a href="settings.html" class="off2"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>My company</a>
+    </nav>
+    <p class="side-foot"><span>VEYORA</span><span>Platform</span></p>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <span class="status"><i></i>Platform owner</span>
+      <button class="me" id="me">
+        <span class="avatar" id="avatar">–</span>
+        <span class="who"><strong id="userName">…</strong><small>Platform owner</small></span>
+      </button>
+      <div class="menu" id="menu" hidden><button type="button" id="signOut">Sign out</button></div>
+    </header>
+    <main class="page">
+      <p class="crumb">TRANSPORT OPERATIONS PLATFORM / PLATFORM OWNER</p>
+      <h1>Platform owner</h1>
+      <p class="sub">Approve, suspend and monitor every company on VEYORA.</p>
+      <div id="denied" class="card" hidden><h2>No access</h2><p class="note">This area is only for the platform owner.</p></div>
+      <div id="content" hidden>
+        <div class="stats" id="stats"></div>
+        <div class="grid">
+          <section class="card"><h2>Companies</h2><p class="note">Company registration, approval, suspension and reactivation</p><ul class="rows" id="companies"></ul></section>
+          <div class="col">
+            <section class="card"><h2>Onboarding</h2>
+              <ul class="pref-list"><li><span><strong>Require approval</strong><small>New companies wait as Pending until approved</small></span><button type="button" class="sw" id="approval" role="switch" aria-checked="false" aria-label="Require approval"></button></li></ul>
+            </section>
+            <section class="card"><h2>Platform audit log</h2><ul class="rows" id="audit"></ul></section>
+          </div>
+        </div>
+        <section class="card" id="pset" style="margin-top:18px"></section>
+        <section class="card" id="billing" style="margin-top:18px"></section>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="settings-defs.js"></script>
+  <script src="settings-help.js"></script>
+  <script src="settings-engine.js"></script>
+  <script src="subscription.js"></script>
+  <script src="platform.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Settings — VEYORA</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="settings.css?v=20261029r1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="arrivals.css?v=20261028b3">
+</head>
+<body>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <img src="assets/logo.png" alt="" width="44" height="44">
+      <div>
+        <strong>VEYORA</strong>
+        <span>Transport Management System</span>
+      </div>
+    </div>
+    <p class="side-label">WORKSPACE</p>
+    <nav class="nav" id="nav"></nav>
+    <a class="help" href="#help">
+      <span class="help-ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.3 7.8 8 9 4.7-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span><strong>Need assistance?</strong><small>Visit the help center</small></span>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="side-foot"><span>VEYORA</span><span>v1.0 preview</span></p>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="cswitch" id="cswitch" hidden>
+        <button type="button" class="cs-btn" id="csBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch company">
+          <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6"/></svg><span>Select a company</span><svg class="cs-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="cs-panel" id="csPanel" hidden>
+          <input type="search" id="csSearch" placeholder="Search companies" aria-label="Search companies" autocomplete="off">
+          <ul id="csList" role="listbox" aria-label="Companies"></ul>
+        </div>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="Search routes, vessels, people, and more" aria-label="Search">
+        <kbd>⌘ K</kbd>
+      </label>
+      <span class="status" id="appStatus"><i></i><span id="appStatusText">All systems operational</span></span>
+      <button class="bell" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 6 2 7 2 7H4s2-1 2-7Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><b></b></button>
+      <button class="me" id="me">
+        <span class="avatar" id="avatar">–</span>
+        <span class="who"><strong id="userName">…</strong><small id="userRole">&nbsp;</small></span>
+        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu" id="menu" hidden><button type="button" id="signOut">Sign out</button></div>
+    </header>
+
+    <main class="page">
+      <p class="crumb">TRANSPORT OPERATIONS PLATFORM / VEYORA</p>
+      <div class="page-head">
+        <div>
+          <h1>Settings</h1>
+          <p class="sub">Customize the organization, access controls and system preferences.</p>
+        </div>
+        <button class="pill" type="button" data-audit><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>View audit log</button>
+      </div>
+
+      <div id="pageTip"></div>
+      <div class="welcome" id="welcome" hidden>
+        <strong>Welcome to VEYORA.</strong> Your company is ready. Review its profile below to finish setting up.
+      </div>
+
+      <div class="grid settings-layout">
+        <div class="col chooser">
+          <section class="card chooser-card">
+            <h2>Browse settings</h2>
+            <p class="note">Choose a group, then the setting to edit.</p>
+            <label class="set-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="setSearch" type="search" placeholder="Search settings" aria-label="Search settings" autocomplete="off"></label>
+            <ul class="mgmt" id="mgmt"></ul>
+          </section>
+          <section class="card prefs">
+            <h2>Preferences</h2>
+            <ul class="pref-list" id="prefs"></ul>
+          </section>
+        </div>
+        <section class="card editor" id="panel" aria-live="polite"></section>
+      </div>
+    </main>
+  </div>
+  <div id="subLock" class="sub-lock" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="tips.js"></script>
+  <script src="settings-data.js?v=20261029q1"></script>
+  <script src="settings-defs.js?v=20261029k4"></script>
+  <script src="settings-help.js?v=20261029k4"></script>
+  <script src="notice-types.js?v=20261029r1"></script>
+  <script src="settings-engine.js?v=20261029d1"></script>
+  <script src="subscription.js"></script>
+  <script src="notifications.js"></script>
+  <script src="select-ui.js"></script>
+  <script src="shell.js?v=20261029j1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="arrivals.js?v=20261030b1"></script>
+  <script src="approvers-ui.js?v=20261029g1"></script>
+  <script src="hr-settings.js?v=20261029k4"></script>
+  <script src="page-settings.js?v=20261029j1"></script>
+  <script src="settings.js?v=20261029j1"></script>
+</body>
+</html>

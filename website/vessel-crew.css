@@ -1,0 +1,97 @@
+/* Vessel crew needs (vessel-crew.js). Loaded by operations.html and hr.html. */
+.modal-card.vcx-card{width:min(1080px,100%);padding:0;overflow:hidden auto;border-radius:26px;background:#f6f9fe}
+.vcx-loading{display:flex;align-items:center;gap:12px;padding:40px;justify-content:center;color:#51607d;font-weight:600}
+.vcx-spin{width:16px;height:16px;border-radius:50%;border:2px solid #cfe0f7;border-top-color:#1677e8;display:inline-block;animation:vcx-spin .8s linear infinite;flex:none}
+@keyframes vcx-spin{to{transform:rotate(360deg)}}
+
+.vcx-head{display:flex;gap:16px;align-items:flex-start;padding:26px 28px 22px;background:linear-gradient(120deg,#0f3d91 0%,#1677e8 55%,#3fb6ff 100%);color:#fff;position:relative;overflow:hidden}
+.vcx-head::after{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%)}
+.vcx-head>div{flex:1;position:relative;z-index:1}
+.vcx-kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.vcx-head h2{margin:0 0 6px;font-size:24px;color:#fff}
+.vcx-head p{margin:0;max-width:640px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.88)}
+.vcx-x{position:relative;z-index:1;width:36px;height:36px;border-radius:12px;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.vcx-x:hover{background:rgba(255,255,255,.3)}
+
+.vcx-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;padding:18px 28px 0;margin-top:-6px}
+.vcx-stat{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #e3ebf6;border-radius:18px;padding:14px 16px;box-shadow:0 6px 18px rgba(20,60,120,.06);transition:transform .2s,box-shadow .2s}
+.vcx-stat:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,60,120,.1)}
+.vcx-stat strong{display:block;font-size:22px;line-height:1.1}
+.vcx-stat small{color:#6b7a96;font-size:12px}
+.vcx-stat em{display:block;font-style:normal;font-size:11.5px;font-weight:700;color:#c0293b;margin-top:2px}
+.vcx-stat.short{border-color:#f5c2c7;background:#fff8f8}
+.vcx-stat-ic{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:none}
+.vcx-stat-ic svg,.vcx-role-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+.vcx-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:18px 28px 6px}
+.vcx-search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #dfe7f3;border-radius:14px;padding:0 12px;min-width:220px}
+.vcx-search svg{width:16px;height:16px;fill:none;stroke:#8492ab;stroke-width:2}
+.vcx-search input{border:0;outline:0;padding:11px 0;font:inherit;font-size:13.5px;background:none;flex:1}
+.vcx-apply{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#6b7a96;font-weight:600;flex-wrap:wrap}
+.vcx-apply button,.vcx-presets button{border:1px solid #dfe7f3;background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:12.5px;font-weight:600;color:#33415e;cursor:pointer;transition:all .15s}
+.vcx-apply button:hover,.vcx-presets button:hover{border-color:#1677e8;color:#1677e8;background:#f1f7ff}
+.vcx-presets small{color:#8a97b0;font-weight:700;margin-left:2px}
+.vcx-addrole{display:flex;gap:6px;margin-left:auto}
+.vcx-addrole input{border:1px solid #dfe7f3;border-radius:12px;padding:9px 12px;font:inherit;font-size:13px;min-width:190px;background:#fff}
+.vcx-addrole button{display:flex;align-items:center;gap:6px;border:0;border-radius:12px;padding:9px 14px;background:#e8f1ff;color:#1677e8;font-weight:700;font-size:13px;cursor:pointer}
+.vcx-addrole svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4}
+
+.vcx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;padding:14px 28px 6px}
+.vcx-vessel{background:#fff;border:1px solid #e3ebf6;border-radius:22px;padding:18px;box-shadow:0 8px 24px rgba(20,60,120,.06);display:flex;flex-direction:column;gap:14px;transition:box-shadow .2s,transform .2s;animation:vcx-in .35s ease both}
+.vcx-vessel:hover{box-shadow:0 14px 32px rgba(20,60,120,.12)}
+@keyframes vcx-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.vcx-vessel header{display:flex;align-items:center;gap:12px}
+.vcx-boat{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#e3f0ff,#cfe4ff);color:#1677e8;flex:none}
+.vcx-boat svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.vcx-title{flex:1;min-width:0}
+.vcx-title strong{display:block;font-size:16px}
+.vcx-title small{color:#6b7a96;font-size:12px}
+.vcx-pill{font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px}
+.vcx-pill.ok{background:#dcf5e8;color:#128a55}.vcx-pill.idle{background:#eef1f7;color:#5c6c8a}.vcx-pill.warn{background:#fdecd0;color:#c27400}
+.vcx-total{display:flex;flex-direction:column;align-items:center;min-width:52px;padding:6px 10px;border-radius:14px;background:#0f3d91;color:#fff}
+.vcx-total b{font-size:18px;line-height:1.1}
+.vcx-total small{font-size:10px;opacity:.8}
+.vcx-seats{display:flex;flex-wrap:wrap;gap:6px;min-height:22px;padding:10px 12px;background:#f6f9fe;border-radius:14px}
+.vcx-seat{width:18px;height:18px;border-radius:6px;animation:vcx-pop .25s ease both}
+.vcx-seats-empty{font-size:12px;color:#8a97b0}
+@keyframes vcx-pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.vcx-roles{display:flex;flex-direction:column;gap:8px}
+.vcx-role{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:14px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.vcx-role.on{background:#fbfcff;border-color:#e8eef8}
+.vcx-role-ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:none}
+.vcx-role-ic svg{width:17px;height:17px}
+.vcx-role-name{flex:1;font-weight:700;font-size:14px}
+.vcx-role-name small{display:block;font-weight:500;font-size:11.5px;color:#8a97b0}
+.vcx-role-name small.warn{color:#c0293b;font-weight:700}
+.vcx-step{display:flex;align-items:center;background:#f1f5fb;border-radius:999px;padding:3px}
+.vcx-step button{width:30px;height:30px;border-radius:50%;border:0;background:#fff;color:#33415e;display:grid;place-items:center;cursor:pointer;box-shadow:0 1px 3px rgba(20,50,100,.12);transition:transform .1s,background .15s}
+.vcx-step button:hover:not(:disabled){background:#1677e8;color:#fff}
+.vcx-step button:active:not(:disabled){transform:scale(.9)}
+.vcx-step button:disabled{opacity:.35;cursor:default}
+.vcx-step svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.vcx-step output{min-width:30px;text-align:center;font-weight:800;font-size:15px}
+.vcx-vessel footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px dashed #e3ebf6;padding-top:12px}
+.vcx-presets{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.vcx-save{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#8a97b0}
+.vcx-save svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6}
+.vcx-save.ok{color:#128a55}.vcx-save.err{color:#c0293b}.vcx-save.busy{color:#1677e8}
+.vcx-save.pop{animation:vcx-pop .3s ease}
+.vcx-empty{margin:14px 28px;padding:30px;text-align:center;color:#6b7a96;background:#fff;border:1px dashed #cfdcef;border-radius:18px}
+.vcx-foot{position:sticky;bottom:0;display:flex;align-items:center;gap:12px;padding:16px 28px;margin-top:12px;background:rgba(246,249,254,.92);backdrop-filter:blur(8px);border-top:1px solid #e3ebf6}
+.vcx-status{flex:1;display:flex;align-items:center;gap:8px;font-size:13px;color:#6b7a96;font-weight:600}
+.vcx-status svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vcx-status.ok{color:#128a55}.vcx-status.err{color:#c0293b}
+
+/* Role colours */
+.tone-blue .vcx-stat-ic,.tone-blue .vcx-role-ic{background:#e3f0ff;color:#1677e8}.vcx-seat.tone-blue{background:#1677e8}
+.tone-teal .vcx-stat-ic,.tone-teal .vcx-role-ic{background:#dcf5ee;color:#13a98b}.vcx-seat.tone-teal{background:#13a98b}
+.tone-amber .vcx-stat-ic,.tone-amber .vcx-role-ic{background:#fdf0d9;color:#e08a00}.vcx-seat.tone-amber{background:#f59e0b}
+.tone-violet .vcx-stat-ic,.tone-violet .vcx-role-ic{background:#ece9ff;color:#6d5ce7}.vcx-seat.tone-violet{background:#6d5ce7}
+.tone-rose .vcx-stat-ic,.tone-rose .vcx-role-ic{background:#fde2e4;color:#e5484d}.vcx-seat.tone-rose{background:#e5484d}
+.tone-slate .vcx-stat-ic,.tone-slate .vcx-role-ic{background:#eef1f7;color:#5c6c8a}.vcx-seat.tone-slate{background:#8492ab}
+
+@media (max-width:700px){
+  .vcx-head,.vcx-summary,.vcx-tools,.vcx-grid,.vcx-foot{padding-left:16px;padding-right:16px}
+  .vcx-addrole{margin-left:0;width:100%}.vcx-addrole input{flex:1;min-width:0}
+  .vcx-grid{grid-template-columns:1fr}
+}

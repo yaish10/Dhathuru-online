@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#041433">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="VEYORA">
+  <title>VEYORA — Transport Management System</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("veyora-theme") || localStorage.getItem("harborline-theme"); } catch (e) {}
+      var theme = saved === "light" || saved === "dark"
+        ? saved
+        : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+      var meta = document.querySelector('meta[name="color-scheme"]');
+      if (meta) meta.setAttribute("content", theme);
+      var bar = document.querySelector('meta[name="theme-color"]');
+      if (bar) bar.setAttribute("content", theme === "light" ? "#8ec8ef" : "#041433");
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+  <div class="sky sky-day" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <button type="button" class="theme" id="themeToggle" aria-label="Switch to daylight">
+    <span class="moon" aria-hidden="true">
+      <svg viewBox="0 0 32 32">
+        <path d="M23 5.2A11 11 0 1 0 23 26.8 8.2 8.2 0 1 1 23 5.2z"/>
+      </svg>
+    </span>
+    <span class="sun" aria-hidden="true"></span>
+  </button>
+
+  <main class="stage">
+    <section class="brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="" width="1254" height="1254">
+      </div>
+      <h1>VEYORA</h1>
+      <p class="product">Transport Management System</p>
+      <ul class="modes">
+        <li>Ferry</li>
+        <li>Speedboat</li>
+        <li>Operations</li>
+        <li>HR</li>
+      </ul>
+    </section>
+
+    <div class="sheets">
+    <section class="card" id="signinCard" aria-labelledby="signin-title">
+      <h2 id="signin-title">Sign in</h2>
+      <p class="lead">Access your organization</p>
+
+      <form id="loginForm" novalidate>
+        <label class="field">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m4 7 8 6 8-6"/>
+            </svg>
+          </span>
+          <input id="email" name="email" type="text" autocomplete="username" placeholder="Email or Staff ID" required>
+        </label>
+
+        <label class="field">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="5" y="11" width="14" height="10" rx="2"/>
+              <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+            </svg>
+          </span>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
+          <button type="button" class="eye" id="togglePassword" aria-label="Show password" aria-pressed="false">
+            <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <svg class="eye-shut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M3 3l18 18"/>
+              <path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6.5 0 10 6 10 6a18 18 0 0 1-4 4.2"/>
+              <path d="M6.1 6.8C3.6 8.5 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4.2-.9"/>
+              <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>
+            </svg>
+          </button>
+        </label>
+
+        <div class="row">
+          <label class="remember">
+            <input type="checkbox" id="remember" checked>
+            <span>Remember me</span>
+          </label>
+          <a class="forgot" href="#forgot">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="primary">
+          Sign in
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <button type="button" class="text-btn" id="openCompany">Create a company</button>
+
+      <p class="form-msg" id="formMsg" role="status" hidden></p>
+    </section>
+
+    <section class="card" id="companyCard" hidden aria-labelledby="company-title">
+      <button type="button" class="back" id="closeCompany">Back to sign in</button>
+      <h2 id="company-title" tabindex="-1">Create a company</h2>
+      <p class="lead">Register a transport company on VEYORA</p>
+
+      <form id="companyForm" novalidate>
+        <label class="labeled" for="companyName">
+          <span class="label">Company name <abbr title="required">*</abbr></span>
+          <span class="field">
+            <input id="companyName" name="companyName" type="text" autocomplete="organization" placeholder="Official or display name" required maxlength="120">
+          </span>
+        </label>
+
+        <label class="labeled" for="companyType">
+          <span class="label">Company type <abbr title="required">*</abbr></span>
+          <span class="field">
+            <select id="companyType" name="companyType" required>
+              <option value="" selected disabled>Select a type</option>
+              <option>Ferry Operator</option>
+              <option>Speedboat Operator</option>
+              <option>Both</option>
+              <option>Other</option>
+            </select>
+          </span>
+        </label>
+
+        <label class="labeled" for="ownerEmail">
+          <span class="label">Your login email <abbr title="required">*</abbr></span>
+          <span class="field">
+            <input id="ownerEmail" name="ownerEmail" type="email" autocomplete="username" inputmode="email" placeholder="You will sign in with this" required>
+          </span>
+        </label>
+
+        <label class="labeled" for="ownerPassword">
+          <span class="label">Password <abbr title="required">*</abbr></span>
+          <span class="field">
+            <input id="ownerPassword" name="ownerPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+          </span>
+        </label>
+
+        <label class="labeled" for="companyEmail">
+          <span class="label">Company email</span>
+          <span class="field">
+            <input id="companyEmail" name="companyEmail" type="email" autocomplete="email" inputmode="email" placeholder="Optional">
+          </span>
+        </label>
+
+        <label class="labeled" for="companyPhone">
+          <span class="label">Contact number</span>
+          <span class="field">
+            <input id="companyPhone" name="companyPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Optional">
+          </span>
+        </label>
+
+        <div class="labeled">
+          <span class="label" id="logoLabel">Company logo</span>
+          <div class="logo-row">
+            <img id="logoPreview" alt="" hidden>
+            <label class="ghost" for="companyLogo">Add logo</label>
+            <input id="companyLogo" name="companyLogo" type="file" accept="image/png,image/jpeg,image/webp,image/gif" aria-labelledby="logoLabel">
+            <button type="button" class="ghost" id="logoClear" hidden>Remove</button>
+          </div>
+        </div>
+
+        <button type="submit" class="primary">
+          Create company
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <div id="companyResult" hidden>
+        <h2 id="result-title" tabindex="-1">Company created</h2>
+        <p class="lead" id="resultLead"></p>
+        <img id="resultLogo" class="result-logo" alt="" hidden>
+        <dl class="result">
+          <div><dt>Company name</dt><dd id="outName"></dd></div>
+          <div><dt>Company type</dt><dd id="outType"></dd></div>
+          <div><dt>Company email</dt><dd id="outEmail"></dd></div>
+          <div><dt>Contact number</dt><dd id="outPhone"></dd></div>
+          <div><dt>Company ID</dt><dd id="outId"></dd></div>
+          <div><dt>Created date</dt><dd id="outDate"></dd></div>
+          <div><dt>Company status</dt><dd><span class="status" id="outStatus"></span></dd></div>
+        </dl>
+        <button type="button" class="primary" id="createAnother">Create another</button>
+        <button type="button" class="text-btn" id="doneCompany">Back to sign in</button>
+      </div>
+
+      <p class="form-msg" id="companyMsg" role="status" hidden></p>
+    </section>
+    <section class="card" id="inviteCard" hidden aria-labelledby="invite-title">
+      <h2 id="invite-title">Join <span id="inviteCompany">a company</span></h2>
+      <p class="lead" id="inviteLead">You have been invited to VEYORA</p>
+      <form id="inviteForm" novalidate>
+        <label class="labeled" for="inviteEmail">
+          <span class="label">Invited email</span>
+          <span class="field"><input id="inviteEmail" type="email" readonly autocomplete="username"></span>
+        </label>
+        <label class="labeled" for="invitePassword">
+          <span class="label" id="invitePassLabel">Choose a password</span>
+          <span class="field"><input id="invitePassword" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required></span>
+        </label>
+        <label class="remember"><input type="checkbox" id="inviteExisting"><span>I already have a VEYORA account</span></label>
+        <button type="submit" class="primary" id="inviteBtn">Join company</button>
+      </form>
+      <p class="form-msg" id="inviteMsg" role="status" hidden></p>
+    </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="select-ui.js"></script>
+  <script src="app.js"></script>
+  <script src="company.js"></script>
+  <script src="invite.js"></script>
+</body>
+</html>
