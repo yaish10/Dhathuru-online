@@ -1,0 +1,50 @@
+/* Boat markers on Leaflet maps (vessel-markers.js). Everything is scoped to .vsl / .vsl-icon. */
+.vsl-icon{background:none!important;border:0!important;pointer-events:none!important;overflow:visible}
+.vsl{--c:#1688ff;--glow:rgba(22,136,255,.38);--w:48px;--h:66px;--heading:0deg;
+  position:absolute;left:0;top:0;width:var(--w);height:var(--h);transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;isolation:isolate;font-family:Inter,system-ui,sans-serif;outline:none}
+.vsl.stopped{--c:#a2adba;--glow:rgba(162,173,186,.25)}
+.vsl.idle{--c:#f5a623;--glow:rgba(245,166,35,.3)}
+.vsl.offline{--c:#ef4056;--glow:rgba(239,64,86,.3)}
+.vsl-glow{display:none;position:absolute;width:130%;height:100%;left:-15%;top:0;border-radius:50%;
+  background:radial-gradient(circle,rgba(52,211,153,.38) 0%,rgba(52,211,153,.12) 42%,transparent 70%);
+  pointer-events:none;z-index:0;filter:blur(1px)}
+.vsl.live .vsl-glow{display:block;animation:vsl-live-glow 2.8s ease-in-out infinite}
+.vsl.live{--c:#34d399;--glow:rgba(52,211,153,.32)}
+.vsl.live .vsl-ring{
+  border-color:#6ee7b7;background:rgba(52,211,153,.16);
+  box-shadow:0 0 10px rgba(52,211,153,.35),0 0 22px rgba(52,211,153,.18),inset 0 0 8px rgba(52,211,153,.2)
+}
+.vsl-ring{position:absolute;width:76%;height:57%;left:12%;top:21%;border:3px solid var(--c);border-radius:50%;background:var(--glow);
+  box-shadow:0 0 12px var(--glow),inset 0 0 8px var(--glow);transition:border-color .2s,box-shadow .2s}
+.vsl.selected .vsl-ring{width:94%;height:68%;left:3%;top:16%;box-shadow:0 0 0 5px var(--glow),0 0 22px var(--glow)}
+.vsl:focus-visible .vsl-ring{box-shadow:0 0 0 4px #fff,0 0 0 7px var(--c)}
+.vsl-cone{position:absolute;inset:-30% -20% 25%;z-index:-1;color:var(--c);transform:rotate(var(--heading));transform-origin:50% 72%;pointer-events:none;transition:transform .6s ease}
+.vsl-cone svg{width:100%;height:100%;overflow:visible}
+.vsl.no-heading .vsl-cone,.vsl.offline .vsl-cone{display:none}
+.vsl-rot{position:absolute;inset:0;transform:rotate(var(--heading));transform-origin:50% 50%;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35));z-index:2;transition:transform .6s ease}
+.vsl.no-heading .vsl-rot{transform:none;transition:none}
+.vsl-boat{display:block;width:100%;height:100%;overflow:visible}
+.vsl.moving .vsl-ring{animation:vsl-pulse 2.4s ease-out infinite}
+.vsl.live.moving .vsl-ring{animation:vsl-live-pulse 2.6s ease-out infinite}
+.vsl-speed{display:none}
+.vsl-off{display:none;position:absolute;right:-3px;top:32%;width:20px;height:20px;border-radius:50%;background:#ef4056;color:#fff;border:2px solid #fff;text-align:center;line-height:17px;font-size:18px;font-weight:700;z-index:4}
+.vsl.offline .vsl-off{display:block}
+.vsl-label{
+  display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+  position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);
+  margin:0;padding:5px 9px;border-radius:8px;white-space:nowrap;color:#fff;
+  background:rgba(8,18,32,.9);border:1px solid rgba(255,255,255,.22);
+  font-size:12px;font-weight:700;letter-spacing:.01em;line-height:1.2;
+  box-shadow:0 3px 12px rgba(0,0,0,.4);z-index:6;pointer-events:none
+}
+.vsl-label b{display:block;font-weight:800;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+.vsl-label small{display:block;margin:0;font-size:11px;font-weight:800;color:#86efac}
+.vsl-label small.vsl-alt{color:#cfe3fb;font-weight:700}
+.vsl-label small.vsl-alt.high{color:#fbbf24}
+@keyframes vsl-pulse{0%,100%{box-shadow:0 0 12px var(--glow),inset 0 0 8px var(--glow)}50%{box-shadow:0 0 20px var(--glow),inset 0 0 12px var(--glow)}}
+@keyframes vsl-live-pulse{
+  0%,100%{box-shadow:0 0 10px rgba(52,211,153,.32),0 0 18px rgba(52,211,153,.14),inset 0 0 8px rgba(52,211,153,.18)}
+  50%{box-shadow:0 0 16px rgba(52,211,153,.5),0 0 34px rgba(52,211,153,.22),inset 0 0 10px rgba(52,211,153,.28)}
+}
+@keyframes vsl-live-glow{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.vsl .vsl-ring,.vsl-glow{animation:none!important}.vsl-rot,.vsl-cone{transition:none}}
