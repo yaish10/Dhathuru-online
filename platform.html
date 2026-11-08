@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Platform — KAHDHU</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="settings.css?v=20261107bell2">
+  <link rel="stylesheet" href="settings-ui.css?v=20261104s1">
+  <link rel="stylesheet" href="platform-ui.css?v=20261107ob1">
+  <link rel="stylesheet" href="shell-ui.css?v=20261104sh2">
+</head>
+<body>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <img src="assets/logo.png" alt="" width="44" height="44">
+      <div><strong>KAHDHU</strong><span>Platform Owner</span></div>
+    </div>
+    <p class="side-label">PLATFORM</p>
+    <nav class="nav">
+      <a href="platform.html" class="on" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/></svg>Companies</a>
+      <a href="settings.html" class="off2"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>My company</a>
+    </nav>
+    <p class="side-foot"><span>KAHDHU</span><span>Platform</span></p>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <span class="status"><i></i>Platform owner</span>
+      <button class="me" id="me">
+        <span class="avatar" id="avatar">–</span>
+        <span class="who"><strong id="userName">…</strong><small>Platform owner</small></span>
+      </button>
+      <div class="menu" id="menu" hidden><button type="button" id="signOut">Sign out</button></div>
+    </header>
+    <main class="page">
+      <p class="crumb">TRANSPORT OPERATIONS PLATFORM / PLATFORM OWNER</p>
+      <div class="page-head"><div><h1>Platform owner</h1>
+      <p class="sub">Approve, suspend and monitor every company on KAHDHU.</p></div></div>
+      <div id="denied" class="card" hidden><h2>No access</h2><p class="note">This area is only for the platform owner.</p></div>
+      <div id="content" hidden>
+        <div class="stats" id="stats"></div>
+        <section class="card" id="platform"></section>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="settings-defs.js"></script>
+  <script src="onboarding-steps.js?v=20261107ob1"></script>
+  <script src="settings-help.js"></script>
+  <script src="settings-engine.js"></script>
+  <script src="subscription.js"></script>
+  <script src="platform.js?v=20261107ob1"></script>
+  <script src="platform-sms.js?v=20261107pf1"></script>
+</body>
+</html>

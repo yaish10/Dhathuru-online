@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PDF Layouts — KAHDHU</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="settings.css?v=20261107bell2">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="hr.css">
+  <link rel="stylesheet" href="finance.css">
+  <link rel="stylesheet" href="pdf-layouts.css">
+  <link rel="stylesheet" href="shell-ui.css?v=20261107nav1">
+</head>
+<body>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <img src="assets/logo.png" alt="" width="44" height="44">
+      <div>
+        <strong>KAHDHU</strong>
+        <span>Transport Management System</span>
+      </div>
+    </div>
+    <p class="side-label">WORKSPACE</p>
+    <nav class="nav" id="nav"></nav>
+    <a class="help" href="#help">
+      <span class="help-ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.3 7.8 8 9 4.7-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span><strong>Need assistance?</strong><small>Visit the help center</small></span>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="side-foot"><span>KAHDHU</span><span>v1.0 preview</span></p>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="cswitch" id="cswitch" hidden>
+        <button type="button" class="cs-btn" id="csBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch company">
+          <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6"/></svg><span>Select a company</span><svg class="cs-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="cs-panel" id="csPanel" hidden>
+          <input type="search" id="csSearch" placeholder="Search companies" aria-label="Search companies" autocomplete="off">
+          <ul id="csList" role="listbox" aria-label="Companies"></ul>
+        </div>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="Search routes, vessels, people, and more" aria-label="Search">
+        <kbd>⌘ K</kbd>
+      </label>
+      <span class="status" id="appStatus"><i></i><span id="appStatusText">All systems operational</span></span>
+      <button class="bell" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 6 2 7 2 7H4s2-1 2-7Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><b></b></button>
+      <button class="me" id="me">
+        <span class="avatar" id="avatar">–</span>
+        <span class="who"><strong id="userName">…</strong><small id="userRole">&nbsp;</small></span>
+        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu" id="menu" hidden><button type="button" id="signOut">Sign out</button></div>
+    </header>
+
+    <main class="page dash hr fin pdf-layouts-page">
+      <p class="crumb">TRANSPORT OPERATIONS PLATFORM / KAHDHU</p>
+      <div class="dash-head">
+        <div>
+          <h1 id="plTitle">PDF Layouts</h1>
+          <p class="sub" id="plSub">Create and publish document templates. Preview and PDF use the same layout engine.</p>
+        </div>
+        <div class="dash-meta" id="plActions"></div>
+      </div>
+      <div id="pageTip"></div>
+      <div id="pl" aria-live="polite"><p class="msg">Loading…</p></div>
+    </main>
+    <div class="modal" id="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" id="modalCard"></div></div>
+  </div>
+  <div id="subLock" class="sub-lock" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="tips.js"></script>
+  <script src="subscription.js"></script>
+  <script src="notifications.js?v=20261107bell2"></script>
+  <script src="select-ui.js"></script>
+  <script src="shell.js?v=20261107dom1"></script>
+  <script src="assets/qrcode-generator.js"></script>
+  <script src="pdf-schema.js?v=tk1"></script>
+  <script src="pdf-fields.js?v=tk1"></script>
+  <script src="pdf-render.js?v=tk1"></script>
+  <script src="pdf-engine.js"></script>
+  <script src="pdf-api.js"></script>
+  <script src="pdf-layouts.js"></script>
+</body>
+</html>

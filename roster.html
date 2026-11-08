@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Duty Roster — KAHDHU</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="settings.css?v=20261107bell2">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="hr.css?v=20261107hr1">
+  <link rel="stylesheet" href="roster.css?v=20261104r3">
+  <link rel="stylesheet" href="roster-settings-ui.css?v=20261104u1">
+  <link rel="stylesheet" href="shell-ui.css?v=20261104sh2">
+</head>
+<body>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <img src="assets/logo.png" alt="" width="44" height="44">
+      <div>
+        <strong>KAHDHU</strong>
+        <span>Transport Management System</span>
+      </div>
+    </div>
+    <p class="side-label">WORKSPACE</p>
+    <nav class="nav" id="nav"></nav>
+    <a class="help" href="#help">
+      <span class="help-ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.3 7.8 8 9 4.7-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span><strong>Need assistance?</strong><small>Visit the help center</small></span>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="side-foot"><span>KAHDHU</span><span>v1.0 preview</span></p>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="cswitch" id="cswitch" hidden>
+        <button type="button" class="cs-btn" id="csBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Switch company">
+          <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6"/></svg><span>Select a company</span><svg class="cs-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="cs-panel" id="csPanel" hidden>
+          <input type="search" id="csSearch" placeholder="Search companies" aria-label="Search companies" autocomplete="off">
+          <ul id="csList" role="listbox" aria-label="Companies"></ul>
+        </div>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="Search routes, vessels, people, and more" aria-label="Search">
+        <kbd>⌘ K</kbd>
+      </label>
+      <span class="status" id="appStatus"><i></i><span id="appStatusText">All systems operational</span></span>
+      <button class="bell" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 6 2 7 2 7H4s2-1 2-7Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><b></b></button>
+      <button class="me" id="me">
+        <span class="avatar" id="avatar">–</span>
+        <span class="who"><strong id="userName">…</strong><small id="userRole">&nbsp;</small></span>
+        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu" id="menu" hidden><button type="button" id="signOut">Sign out</button></div>
+    </header>
+
+    <main class="page dash hr roster">
+      <div class="dash-head">
+        <div>
+          <h1>Duty Roster</h1>
+          <p class="sub" id="rSub">Plan and manage crew duties, shifts and assignments.</p>
+        </div>
+        <div class="dash-meta r-controls">
+          <label class="sample-toggle" title="Preview the roster with example crew and shifts">
+            <span>Example data</span><button type="button" class="sw" id="sampleToggle" role="switch" aria-checked="false" aria-label="Show example data"></button>
+          </label>
+          <div class="monthbox"><svg viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M9 3v4M15 3v4"/></svg><span id="rLabel">…</span>
+            <button type="button" id="rPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+            <button type="button" id="rNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>
+          <select id="rView" class="viewsel" aria-label="View"><option>Month</option><option>Two weeks</option><option>Week</option></select>
+          <button type="button" class="fs-btn" id="fsBtn" aria-pressed="false" title="Full screen: view and edit the roster on the whole screen (Esc to exit)">
+            <svg class="fs-in" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+            <svg class="fs-out" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
+            <span>Full screen</span>
+          </button>
+          <div class="split" id="createWrap" hidden>
+            <button type="button" class="primary-btn" id="createBtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Create Roster</button>
+            <button type="button" class="primary-btn caret" id="createMore" aria-label="More roster actions" aria-haspopup="menu"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="menu r-menu" id="createMenu" hidden role="menu">
+              <button type="button" data-act="copy" role="menuitem">Copy previous period</button>
+              <button type="button" data-act="pattern" role="menuitem">Apply a pattern…</button>
+              <button type="button" data-act="auto" role="menuitem">Fill open shifts</button>
+              <button type="button" data-act="clear" role="menuitem">Clear this period</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pageTip"></div>
+      <div class="tabs r-tabs" role="tablist" id="rTabs"></div>
+      <div id="roster" aria-live="polite"><p class="msg">Loading…</p></div>
+    </main>
+    <div class="cellmenu" id="cellMenu" hidden role="menu"></div>
+    <div class="toast" id="toast" role="status" hidden></div>
+    <div class="modal" id="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" id="modalCard"></div></div>
+  </div>
+  <div id="subLock" class="sub-lock" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="tips.js"></script>
+  <script src="subscription.js"></script>
+  <script src="notifications.js?v=20261107bell2"></script>
+  <script src="settings-defs.js"></script>
+  <script src="settings-engine.js?v=20261107n1"></script>
+  <script src="roster-settings-ui.js?v=20261104u1"></script>
+  <script src="hr-settings.js?v=20261107hr1"></script>
+  <script src="select-ui.js"></script>
+  <script src="shell.js?v=20261107dom1"></script>
+  <script src="roster-sample.js"></script>
+  <script src="roster.js?v=20261104r3"></script>
+</body>
+</html>
