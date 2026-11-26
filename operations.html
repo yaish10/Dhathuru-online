@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Operations — KAHDHU</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="settings.css?v=20261107n2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="dashboard.css">
@@ -15,7 +18,8 @@
   <link rel="stylesheet" href="vessel-crew.css">
   <link rel="stylesheet" href="arrivals.css?v=20261103b1">
   <link rel="stylesheet" href="settings-ui.css?v=20261106s2">
-  <link rel="stylesheet" href="shell-ui.css?v=20261104sh2">
+  <link rel="stylesheet" href="shell-ui.css?v=20261126unslop1">
+  <link rel="stylesheet" href="operations-ui.css?v=20261126unslop1">
 </head>
 <body>
   <aside class="side" id="side">
@@ -26,11 +30,11 @@
         <span>Transport Management System</span>
       </div>
     </div>
-    <p class="side-label">WORKSPACE</p>
+    <p class="side-label">Workspace</p>
     <nav class="nav" id="nav"></nav>
     <a class="help" href="#help">
       <span class="help-ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.3 7.8 8 9 4.7-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-      <span><strong>Need assistance?</strong><small>Visit the help center</small></span>
+      <span><strong>Help</strong><small>Guides and support</small></span>
       <svg class="chev" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     <p class="side-foot"><span>KAHDHU</span><span>v1.0 preview</span></p>
@@ -50,10 +54,10 @@
       </div>
       <label class="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input type="search" placeholder="Search trips, routes, vessels, people…" aria-label="Search">
+        <input type="search" placeholder="Search" aria-label="Search">
         <kbd>⌘ K</kbd>
       </label>
-      <span class="status" id="appStatus"><i></i><span id="appStatusText">All systems operational</span></span>
+      <span class="status" id="appStatus"><i></i><span id="appStatusText">Systems ok</span></span>
       <button class="bell" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 6 2 7 2 7H4s2-1 2-7Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><b></b></button>
       <button class="me" id="me">
         <span class="avatar" id="avatar">–</span>
@@ -64,11 +68,11 @@
     </header>
 
     <main class="page dash hr ops ops-board-page">
-      <p class="crumb">TRANSPORT OPERATIONS PLATFORM / KAHDHU</p>
+      <p class="crumb">Kahdhu · Operations</p>
       <div class="dash-head">
         <div>
           <h1>Operations</h1>
-          <p class="sub">Live view of vessels, trips and fleet status</p>
+          <p class="sub">Today’s sailings, live vessels and pier status</p>
         </div>
         <div class="dash-meta" id="opsActions"></div>
       </div>
