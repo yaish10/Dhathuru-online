@@ -1,0 +1,421 @@
+/* ===== Operations page — harbour unslop (Nov 2026) =====
+   Direction: salt-air, exact, unhurried. Moments: live map + next departure time.
+   Signature: pier-dot on schedule rail / route. Chrome stays quiet. */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
+.page.ops,.page.ops-board-page{
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-weight:400;
+  color:#111827
+}
+.page.ops .dash-head h1{
+  font-size:28px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  color:#111827;
+  margin:2px 0 4px
+}
+.page.ops .dash-head .sub{
+  color:#6b7487;
+  font-weight:400;
+  font-size:14px
+}
+.page.ops .crumb{
+  text-transform:none;
+  letter-spacing:0;
+  font-weight:500;
+  color:#6b7487;
+  font-size:12px
+}
+
+/* —— Meta chips: quiet, no pulse —— */
+.ops-datechip,.ops-timechip,.ops-livechip{
+  height:36px;
+  padding:0 12px;
+  border-radius:10px;
+  font-weight:500;
+  box-shadow:none;
+  background:#fff;
+  border:1px solid rgba(17,24,39,.08)
+}
+.ops-timechip{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0
+}
+.ops-livechip{color:#15803d}
+.ops-livechip i{
+  width:7px;height:7px;
+  background:#16a34a;
+  box-shadow:0 0 0 3px rgba(22,163,74,.15);
+  animation:none
+}
+.ops-live-stamp{
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+  font-size:12px;
+  color:#15803d;
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  border-radius:8px;
+  padding:4px 8px
+}
+
+/* —— Actions —— */
+.ops-home{gap:16px}
+.ops-home-acts{gap:8px;margin-top:0}
+.ops-home-acts .btn-soft,.ops-home-acts .primary-btn{
+  height:36px;
+  padding:0 14px;
+  border-radius:10px;
+  font-weight:500;
+  box-shadow:none;
+  transition:background-color .15s ease,border-color .15s ease,color .15s ease
+}
+.ops-home-acts .primary-btn,
+.page.ops .primary-btn,
+.page.ops .save{
+  background:#1d4ed8;
+  background-image:none;
+  box-shadow:none;
+  font-weight:500
+}
+.ops-home-acts .primary-btn:hover,
+.page.ops .primary-btn:hover{filter:brightness(1.05)}
+.ops-home-acts .btn-soft{
+  background:#eceff4;
+  color:#111827;
+  border:0;
+  font-weight:500
+}
+
+/* —— KPI strip: numbers first, no glowing wells —— */
+.ops-home-kpis{gap:12px}
+.ops-hk{
+  border-radius:14px;
+  padding:16px;
+  box-shadow:none;
+  border:1px solid rgba(17,24,39,.08);
+  gap:12px;
+  transition:border-color .15s ease
+}
+.ops-hk:hover{transform:none;border-color:#cbd5e1}
+.ops-hk-ic{
+  width:36px;height:36px;
+  border-radius:10px;
+  box-shadow:none !important
+}
+.ops-hk-ic svg{width:18px;height:18px;stroke-width:1.75}
+.ops-hk-ic.blue{background:#1d4ed8}
+.ops-hk-ic.green{background:#15803d}
+.ops-hk-ic.amber{background:#b45309}
+.ops-hk-ic.rose{background:#b91c1c}
+.ops-hk small{font-size:12px;font-weight:500;color:#6b7487}
+.ops-hk strong{
+  font-size:28px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  color:#111827;
+  margin:2px 0 2px
+}
+.ops-hk > div span{font-size:12px;font-weight:400;color:#6b7487}
+
+/* —— Cards —— */
+.ops-home-card{
+  border-radius:16px;
+  padding:16px;
+  box-shadow:none;
+  border:1px solid rgba(17,24,39,.08)
+}
+.ops-home-h{margin-bottom:12px}
+.ops-home-h h2{font-size:15px;font-weight:500;letter-spacing:0;color:#111827}
+.ops-home-h svg{width:16px;height:16px;color:#6b7487;stroke-width:1.75}
+.ops-viewall{font-weight:500;font-size:13px;color:#1d4ed8}
+
+/* —— Map tools —— */
+.ops-trail-view{
+  background:#111827;
+  border-radius:8px;
+  font-weight:500;
+  padding:6px 10px;
+  font-size:12px
+}
+.ops-trail-view:hover{background:#1f2937}
+.ops-trail-view.on{background:#15803d}
+.ops-map-basemap{background:#eceff4;border-radius:8px;padding:2px}
+.ops-map-basemap button{
+  font-weight:500;
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:12px;
+  color:#4b5565
+}
+.ops-map-basemap button.on{
+  background:#fff;
+  color:#111827;
+  box-shadow:0 1px 2px rgba(17,24,39,.06)
+}
+.ops-live-map{border-radius:12px;min-height:480px}
+.ops-map-legend{
+  border-radius:10px;
+  font-weight:500;
+  font-size:11px;
+  color:#4b5565;
+  background:rgba(255,255,255,.94);
+  box-shadow:none;
+  border:1px solid rgba(17,24,39,.08)
+}
+.ops-map-legend .lg.trail,
+.ops-map-legend .lg.live{box-shadow:none}
+
+/* —— Today's schedule: quiet card, loud next-time —— */
+.ops-sked2{
+  background:#fff;
+  border:1px solid rgba(17,24,39,.08);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:none
+}
+.ops-home-mid .ops-sked2{padding:16px 14px 12px}
+.ops-sked2-mark{
+  width:40px;height:40px;
+  border-radius:10px;
+  background:#1d4ed8;
+  box-shadow:none
+}
+.ops-home-mid .ops-sked2-mark{width:40px;height:40px;border-radius:10px}
+.ops-sked2-title small{
+  text-transform:none;
+  letter-spacing:0;
+  font-weight:500;
+  font-size:12px;
+  color:#6b7487
+}
+.ops-sked2-title h2,
+.ops-home-mid .ops-sked2-title h2{
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  color:#111827
+}
+.ops-sked2-all{
+  border-radius:10px;
+  background:#1d4ed8;
+  background-image:none;
+  box-shadow:none;
+  font-weight:500;
+  height:36px
+}
+.ops-sked2-tabs button{
+  border-radius:8px;
+  font-weight:500;
+  height:34px;
+  box-shadow:none
+}
+.ops-sked2-tabs button.on{
+  background:#1d4ed8;
+  border-color:#1d4ed8;
+  box-shadow:none
+}
+.ops-sked2-kpi{
+  border-radius:12px;
+  box-shadow:none;
+  min-height:72px;
+  background:#fff !important
+}
+.ops-sked2-kpi.pax .ic{background:#eceff4;color:#4b5565}
+.ops-sked2-kpi.done .ic{box-shadow:none;border-radius:10px}
+.ops-sked2-kpi strong{font-weight:500;font-variant-numeric:tabular-nums}
+.ops-sked2-head{
+  text-transform:none;
+  letter-spacing:0;
+  font-weight:500;
+  font-size:12px
+}
+.ops-sked2-row{
+  border-radius:12px;
+  padding:12px;
+  transition:background-color .15s ease,border-color .15s ease
+}
+.ops-sked2-row:hover{box-shadow:none;background:#f8fafc}
+.ops-sked2-row.is-next{
+  background:#f8fafc;
+  border-color:#dbe3f0;
+  box-shadow:none
+}
+.ops-sked2-row.is-gone,
+.ops-sked2-row.is-board,
+.ops-sked2-row.is-late,
+.ops-sked2-row.is-off{background:#fff}
+.ops-sked2-time{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0
+}
+.ops-home-mid .ops-sked2-time{font-size:14px}
+
+/* Signature: pier-dot on the schedule rail (harbour mark) */
+.ops-sked2-rail i{
+  width:8px;height:8px;
+  background:#94a3b8;
+  box-shadow:0 0 0 2px #fff,0 0 0 3px #cbd5e1
+}
+.ops-sked2-row.is-next .ops-sked2-rail i{
+  background:#1d4ed8;
+  box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(29,78,216,.35)
+}
+.ops-sked2-route{
+  position:relative;
+  font-weight:500
+}
+.ops-sked2-st{
+  font-weight:500;
+  border-radius:8px;
+  text-transform:none;
+  letter-spacing:0
+}
+.ops-sked2-st.board,
+.ops-sked-st.board{background:#eff6ff;color:#1d4ed8}
+.ops-sked2-assign,.ops-sked-assign{
+  border-radius:8px;
+  font-weight:500;
+  background:#e8eef9;
+  color:#1d4ed8;
+  border-color:#c7d7f5
+}
+.ops-sked2-assign:hover,.ops-sked-assign:hover{background:#1d4ed8;color:#fff}
+
+/* Next-departure moment: solid ink surface, time is the bright figure */
+.ops-sked2-hero,
+.ops-next{
+  background:#0f172a !important;
+  background-image:none !important;
+  border-radius:14px;
+  box-shadow:none !important;
+  color:#f8fafc;
+  position:relative;
+  overflow:hidden;
+  padding:16px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:12px;
+  transition:background-color .15s ease
+}
+.ops-sked2-hero::after,
+.ops-next::after{display:none !important}
+.ops-sked2-hero.quiet{background:#f8fafc !important;color:#111827;border:1px solid rgba(17,24,39,.08)}
+.ops-sked2-hero-l small,
+.ops-next-k{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+  opacity:.7;
+  margin-bottom:4px
+}
+.ops-sked2-hero-l strong,
+.ops-next-time strong{
+  display:block;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:36px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+  color:#fff
+}
+.ops-sked2-hero-l span,
+.ops-next-route,.ops-next-meta{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  font-weight:400;
+  opacity:.8
+}
+.ops-sked2-chip,
+.ops-sked2-hero-chips .ops-sked2-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  height:28px;
+  padding:0 10px;
+  border-radius:8px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.14);
+  font-size:12px;
+  font-weight:500;
+  color:#e2e8f0
+}
+.ops-sked2-chip.live i,
+.ops-sked2-chip i{
+  width:6px;height:6px;border-radius:50%;
+  background:#4ade80;
+  box-shadow:none;
+  animation:none
+}
+.ops-sked2-chip.board{background:rgba(147,197,253,.15);border-color:rgba(147,197,253,.25)}
+
+/* Older next-departure card (dispatch live strip) */
+.ops-next{
+  background:linear-gradient(180deg,#0f172a,#111827) /* will be killed */
+}
+.ops-next{
+  background:#0f172a !important
+}
+.ops-pulse,.ops-pulse::after{animation:none !important}
+.ops-pulse::after{display:none}
+.ops-pulse{box-shadow:0 0 0 3px rgba(19,169,139,.18)}
+
+/* —— Fleet —— */
+.ops-fv{
+  border-radius:12px;
+  border:1px solid rgba(17,24,39,.08);
+  box-shadow:none;
+  transition:border-color .15s ease
+}
+.ops-fv:hover{transform:none;border-color:#cbd5e1}
+.ops-fv-pic{border-radius:10px}
+.ops-fv-st{
+  font-weight:500;
+  border-radius:6px;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:11px
+}
+.ops-fv-st i{animation:none;box-shadow:none}
+.ops-fv-meta strong{font-weight:500}
+.ops-fv-meta span,.ops-fv-meta small{font-weight:400;color:#6b7487}
+
+/* —— Board / shared chips —— */
+.ops-load-tag,.ops-load-chip{
+  text-transform:none;
+  letter-spacing:0;
+  font-weight:500;
+  border-radius:6px
+}
+.page.ops .chip{font-weight:500;border-radius:8px}
+.ops-hk-ic,.ops-sked2-mark,.avatar{transition:none}
+
+/* Hover lift removal across ops */
+.ops-kpi:hover,.ops-row:hover{transform:none}
+.ops-row.is-arrived,.ops-crew-trip.is-arrived{animation:none !important}
+
+@media (prefers-reduced-motion:reduce){
+  .ops-home-acts .btn-soft,
+  .ops-home-acts .primary-btn,
+  .ops-sked2-row,
+  .ops-fv{transition:none}
+}
+
+@media (max-width:1100px){
+  .ops-home-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ops-home-mid{grid-template-columns:1fr}
+}
